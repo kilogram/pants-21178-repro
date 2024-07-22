@@ -1,0 +1,47 @@
+[GLOBAL]
+pants_version = "2.22.0a0"
+
+backend_packages = [
+  "pants.backend.docker",
+  "pants.backend.python",
+  "pants.backend.experimental.python",  # for vcs_version
+]
+
+[source]
+root_patterns = ["/"]
+
+[python]
+interpreter_constraints = ["CPython>=3.11,<3.12"]
+pip_version = "latest"
+
+[python-infer]
+use_rust_parser = true
+
+[repl]
+shell = "ipython"
+
+[docker]
+env_vars = [
+  "DOCKER_CONFIG=%(homedir)s/.docker",
+  "DOCKER_BUILDKIT",
+]
+tools = [
+  "dirname",
+  "readlink",
+  "python3",
+  # These may be necessary if using Pyenv-installed Python.
+  "cut",
+  "sed",
+  "bash",
+  # "getent"
+]
+default_repository = "{directory}/{name}"
+
+[test]
+extra_env_vars = ["HOME"]
+
+[environments-preview.names]
+# linux = "//:local_linux"  # <-- Works
+linux = "//:docker"  # <-- breaks
+local_osx = "//:local_osx"
+docker = "//:docker"

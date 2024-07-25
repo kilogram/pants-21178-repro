@@ -22,3 +22,4 @@ WORKDIR /app
 
 COPY libs/print_version.pex /app/
 RUN PEX_TOOLS=1 python3 /app/print_version.pex venv --compile /app
+ENTRYPOINT ["/app/print_version.pex"]

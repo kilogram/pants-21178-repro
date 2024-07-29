@@ -7,7 +7,6 @@ local_environment(
   name="local_linux",
   compatible_platforms=["linux_x86_64"],
   fallback_environment="docker",
-  docker_env_vars=["AWS_PROFILE=apricot"]
 )
 
 local_environment(
@@ -18,6 +17,5 @@ local_environment(
 docker_environment(
   name="docker",
   platform="linux_x86_64",
-  image="203469039017.dkr.ecr.us-east-1.amazonaws.com/dev:0.1-5c3759b5c29c6754d817d4162cc38e9ed391f118d1859f5aac8d964d35ef2aca",
-  docker_env_vars=["AWS_PROFILE=apricot"]
+  image="python:3.9.14-slim-bullseye",
 )

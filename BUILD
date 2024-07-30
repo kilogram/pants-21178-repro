@@ -17,5 +17,5 @@ local_environment(
 docker_environment(
   name="docker",
   platform="linux_x86_64",
-  image="python:3.9.14-slim-bullseye",
+  image="python:3.11.9-slim-bullseye",
 )
